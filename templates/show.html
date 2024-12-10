@@ -1,0 +1,47 @@
+{% extends 'starter-page.html' %}
+{% load static %}
+
+{% block body %}
+
+    <br><br><br>
+
+    <table class="table table-info container">
+
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>DateTime</th>
+        <th>Department</th>
+        <th>Doctor</th>
+        <th>Message</th>
+        <th colspan="3">Action</th>
+    </tr>
+
+
+        {% for x in appointment %}
+            <tr>
+            <td>{{ x.name }}</td>
+            <td>{{ x.email }}</td>
+            <td>{{ x.phone }}</td>
+            <td>{{ x.dateTime }}</td>
+            <td>{{ x.department }}</td>
+            <td>{{ x.doctor }}</td>
+            <td>{{ x.message }}</td>
+                <td>
+                    <a href="/edit/{{ x.id }}" class = 'btn btn-primary'>EDIT</a>
+                </td>
+                <td>
+                   <a href="{% url 'pay' %}" class = 'btn btn-success'>PAY</a>
+                </td>
+                <td>
+                    <a href="/delete/{{ x.id }}" class = 'btn btn-danger'>DELETE</a>
+                </td>
+
+            </tr>
+        {% endfor %}
+
+
+    </table>
+
+{%  endblock %}
